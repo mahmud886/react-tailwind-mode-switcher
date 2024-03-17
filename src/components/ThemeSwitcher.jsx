@@ -4,7 +4,8 @@ const ThemeSwitcher = () => {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDarkMode = localStorage.getItem('darkMode') === 'true' || prefersDarkMode;
     setDarkMode(isDarkMode);
   }, []);
 
